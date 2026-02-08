@@ -1,15 +1,15 @@
 #### Homework #3
-1. Question 1. Counting records
-What is count of records for the 2024 Yellow Taxi Data?
+1. *Question 1. Counting records
+What is count of records for the 2024 Yellow Taxi Data?*
 
     Running the following query
 ```SELECT COUNT(*) FROM arctic-eye-479622-i5.taxi.materialized_table```
     The answer is **20,332,093**
 
-2. Question 2. Data read estimation
-Write a query to count the distinct number of PULocationIDs for the entire dataset on both the tables.
+2. _Question 2. Data read estimation
+Write a query to count the distinct number of PULocationIDs for the entire dataset on both the tables._
 
-What is the estimated amount of data that will be read when this query is executed on the External Table and the Table?
+_What is the estimated amount of data that will be read when this query is executed on the External Table and the Table?_
 
 
     With the following queries 
@@ -27,10 +27,10 @@ FROM `arctic-eye-479622-i5.taxi.materialized_table`;
 ```
 The answer is **0 MB for the External Table and 155.12 MB for the Materialized Table**
 
-3. Question 3. Understanding columnar storage
-Write a query to retrieve the PULocationID from the table (not the external table) in BigQuery. Now write a query to retrieve the PULocationID and DOLocationID on the same table.
+3. _Question 3. Understanding columnar storage
+Write a query to retrieve the PULocationID from the table (not the external table) in BigQuery. Now write a query to retrieve the PULocationID and DOLocationID on the same table._
 
-Why are the estimated number of Bytes different?
+_Why are the estimated number of Bytes different?_
 
     Looking at these queries:
 ```
@@ -42,8 +42,8 @@ FROM `arctic-eye-479622-i5.taxi.materialized_table`;
 ```
 The answer is because **BigQuery is a columnar database, and it only scans the specific columns requested in the query. Querying two columns (PULocationID, DOLocationID) requires reading more data than querying one column (PULocationID), leading to a higher estimated number of bytes processed.**
 
-4. Question 4. Counting zero fare trips
-How many records have a fare_amount of 0?
+4. _Question 4. Counting zero fare trips
+How many records have a fare_amount of 0?_
 
 With this query. 
 ```
@@ -55,8 +55,8 @@ WHERE fare_amount=0;
 The answer is **8,333**
 
 
-5. Question 5. Partitioning and clustering
-What is the best strategy to make an optimized table in Big Query if your query will always filter based on tpep_dropoff_datetime and order the results by VendorID (Create a new table with this strategy)
+5. _Question 5. Partitioning and clustering
+What is the best strategy to make an optimized table in Big Query if your query will always filter based on tpep_dropoff_datetime and order the results by VendorID (Create a new table with this strategy)_
 
 With this queries:
 ```
@@ -71,12 +71,12 @@ SELECT * FROM `arctic-eye-479622-i5.taxi.materialized_table`;
 The answer is **Partition by tpep_dropoff_datetime and Cluster on VendorID**
 
 
-6. Question 6. Partition benefits
-Write a query to retrieve the distinct VendorIDs between tpep_dropoff_datetime 2024-03-01 and 2024-03-15 (inclusive)
+6. _Question 6. Partition benefits
+Write a query to retrieve the distinct VendorIDs between tpep_dropoff_datetime 2024-03-01 and 2024-03-15 (inclusive)_
 
-Use the materialized table you created earlier in your from clause and note the estimated bytes. Now change the table in the from clause to the partitioned table you created for question 5 and note the estimated bytes processed. What are these values?
+_Use the materialized table you created earlier in your from clause and note the estimated bytes. Now change the table in the from clause to the partitioned table you created for question 5 and note the estimated bytes processed. What are these values?_
 
-Choose the answer which most closely matches.
+
 
 With this queries:
 
@@ -91,18 +91,17 @@ WHERE tpep_dropoff_datetime between '2024-03-01' AND '2024-03-15';
 ```
 The answer is **310.24 MB for non-partitioned table and 26.84 MB for the partitioned table**
 
-7. Question 7. External table storage
-Where is the data stored in the External Table you created?
+7. _Question 7. External table storage
+Where is the data stored in the External Table you created?_
 
 The answer is **GCP Bucket**
 
-8. Question 8. Clustering best practices
-It is best practice in Big Query to always cluster your data:
-
+8. _Question 8. Clustering best practices
+It is best practice in Big Query to always cluster your data_
 The answer is **False** it depends on the case. 
 
-9. Question 9. Understanding table scans
-No Points: Write a SELECT count(*) query FROM the materialized table you created. How many bytes does it estimate will be read? Why?
+9. _Question 9. Understanding table scans
+No Points: Write a SELECT count(*) query FROM the materialized table you created. How many bytes does it estimate will be read? Why?_
 
 With this query:
 
