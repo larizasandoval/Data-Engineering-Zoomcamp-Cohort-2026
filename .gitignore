@@ -6,3 +6,7 @@ __pycache__/
 *.py[cod]
 logs/queries
 docker/
+*.csv
+*.ipynb_checkpoints
+*.crc
+.**.*.crc
