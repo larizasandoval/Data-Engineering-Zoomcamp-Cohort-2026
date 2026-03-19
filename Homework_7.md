@@ -29,7 +29,7 @@ Create a topic called `green-trips`:
 
 How long did it take to send the data?
 
-In my case took more than **300 seconds** so that is the closer answer.
+In my case took 58.09 seconds so **60 seconds** so the closest answer.
 
 
 ## Question 3. Consumer - trip distance
